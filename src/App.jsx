@@ -8,12 +8,12 @@ import "./App.css";
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
-const stripePromise = loadStripe("pk_test_51KE6y3LVJcDHsRX1lhqhMb4p1qGH3uevSW3XxpG8HtSigILnH5bxDQekNilhfvpRtp2EGf4CpTY7iW2UB5ZKSZIQ00OM00T9gy");
+const stripePromise = loadStripe("pk_test_51Jx7MdCLqTddqkBlkGOWJGUQVtkn0LiY3LMHcZBK0jS0HxtHzIV11NYRHBa4BgY6RdmYfEdnrunBbKhkZkmIVVkk00Fj2UD2zA");
 
 export default function App() {
   const [clientSecret, setClientSecret] = useState("");
 
-  useEffect(() => {
+  /*useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch("/create-payment-intent", {
       method: "POST",
@@ -22,7 +22,7 @@ export default function App() {
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
-  }, []);
+  }, []);*/
 
   const appearance = {
     theme: 'stripe',
@@ -34,7 +34,10 @@ export default function App() {
 
   return (
     <div className="App">
-      {clientSecret}
+      <form>
+        <label>Client Secret: </label>
+        <input value={clientSecret} onChange={e => setClientSecret(e.target.value)} type="text" />
+      </form>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm test={clientSecret}/>

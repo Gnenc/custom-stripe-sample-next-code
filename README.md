@@ -17,4 +17,8 @@ npm install
 npm start
 ~~~
 
-3. Go to [http://localhost:3000/checkout](http://localhost:3000/checkout)
+3. Go to [http://localhost:3001/checkout](http://localhost:3001/checkout)
+
+### Checking Intent
+
+You can check it from KBOX's stripe dashboard as https://dashboard.stripe.com/test/payments/<intentId> 
